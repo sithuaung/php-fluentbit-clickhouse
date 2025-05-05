@@ -9,6 +9,7 @@ services:
         tag: php.app
     depends_on:
       - fluentbit
+      - clickhouse
 
   fluentbit:
     image: cr.fluentbit.io/fluent/fluent-bit:2.2
