@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  php-app:
+    build: ./php-app
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 127.0.0.1:24224
+        tag: php.app
+    depends_on:
+      - fluentbit
+
+  fluentbit:
+    image: cr.fluentbit.io/fluent/fluent-bit:2.2
+    ports:
+      - "24224:24224"
+    volumes:
+      - ./fluent-bit/fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    depends_on:
+      - clickhouse
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:23
+    ports:
+      - "8123:8123"
+      - "9000:9000"
