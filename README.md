@@ -5,12 +5,17 @@ docker compose up -d
 ```
 
 ### Clickhouse
-Create database named `default`
+1/ Connect clickhouse
+```
+docker compose exec -it clickhouse clickhouse-client
+```
+
+2/ Create database named `default` if not exists yet
 ```
 create database default
 ```
 
-Create `php_logs` table inside `default` database like below
+3/ Create `php_logs` table inside `default` database like below
 ```
 CREATE TABLE php_logs (
   timestamp DateTime,
