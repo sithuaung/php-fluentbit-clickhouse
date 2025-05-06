@@ -1,3 +1,10 @@
+Create database named `default`
+```
+create database default
+```
+
+Create `php_logs` table inside `default` database like below
+```
 CREATE TABLE php_logs (
   timestamp DateTime,
   message String,
@@ -7,3 +14,4 @@ CREATE TABLE php_logs (
   source String
 ) ENGINE = MergeTree()
 ORDER BY timestamp;
+```
