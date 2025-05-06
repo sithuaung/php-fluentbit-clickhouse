@@ -1,3 +1,10 @@
+### Steps
+Start docker compose
+```
+docker compose up -d
+```
+
+### Clickhouse
 Create database named `default`
 ```
 create database default
